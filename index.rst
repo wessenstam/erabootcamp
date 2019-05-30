@@ -83,6 +83,12 @@ What's New
 
 - Optional Lab Updates:
 
+Resources
++++++++++
+
+- `Era Software Download <https://portal.nutanix.com/#/page/releases/eraDetails>`_
+- `Era User Guide <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Era-User-Guide-v10:Nutanix-Era-User- Guide-v10>`_
+
 Agenda
 ++++++
 
@@ -90,6 +96,9 @@ Agenda
     - Era: Deploy and Register
     - Era: Provision Postgres DB
     - Era: Clone Postgres DB
+    - Era: Create MSSQL Server
+    - Era: Register MSSQL Databases
+    - Era: Clone MSSQL DB
     - Era: REST API Explorer
 
 - Optional Labs
