@@ -149,7 +149,7 @@ The SQL Server VM image includes a T-SQL script that will create two sample SQL 
 - WideWorldImporters
 - WideWorldImportersDW
 
-#. Double click the **SQL Server Management Studio 17** icon.
+#. Open (Double Click) **SQL Server Management Studio 17**.
 
 #. When the **Connect to Server** dialoge box appears, Verify the **Server** name, and click **Connect**.
 
@@ -166,3 +166,61 @@ The SQL Server VM image includes a T-SQL script that will create two sample SQL 
    .. figure:: images/mssqlvm_05.png
 
 #. When you see the *RESTORE DATABASE successfully processed*, Close **SQL Server Management Studio**.
+
+Verify the Builtin\Administrator Login
+++++++++++++++++++++++++++++++++++++++
+
+Verfiy the Login
+................
+
+#. Open (Double Click) **SQL Server Management Studio 17**, and connect to the SQL Server Instance.
+
+#. In the **Object Explorer** on the left-hand side of the screen, expand the **Security** folder, and expand the **Logins** folder.
+
+#. Right-click on **BUILTIN\Administrators** and select **Properties**.
+
+#. When the **Login Properties** dialog box appears, click **Server Roles** from the **Select a Page** pane.
+
+#. Verify there is a **checkmark** next to **sysadmin**, and click **OK**.
+
+If the Builtin\Administrator Login Does Not Exist
+.................................................
+
+#. In the **Object Explorer** on the left-hand side of the screen, expand the **Security** folder, and expand the **Logins** folder.
+
+#. Right-click on **Logins** and select **New Login**.
+
+#. When the **Login - New** dialog box appears, click **General** from the **Select a Page** pane.
+
+   - **Login Name** - BUILTIN\Administrators
+
+#. Click **Server Roles** from the **Select a Page** pane.
+
+#. Verify there is a **checkmark** next to **sysadmin**, and click **OK**.
+
+Change Database Recovery Model
+++++++++++++++++++++++++++++++
+
+#. Open (Double Click) **SQL Server Management Studio 17**, and connect to the SQL Server Instance (If not already conneted).
+
+Change the recovery model for the **WideWorldImporters** database from Simple to Full.
+
+#. In the **Object Explorer** on the left-hand side of the screen, expand the **Databases** folder.
+
+#. Right-click on **WideWorldImporters** and select **Properties**.
+
+#. When the **Database Properties** dialog box appears, click **Options** from the **Select a Page** pane.
+
+#. Select **Full** in the **Recovery Model** drop-down list, and click **OK**.
+
+Change the recovery model for the **WideWorldImportersDW** database from Simple to Full.
+
+#. In the **Object Explorer** on the left-hand side of the screen, expand the **Databases** folder.
+
+#. Right-click on **WideWorldImportersDW** and select **Properties**.
+
+#. When the **Database Properties** dialog box appears, click **Options** from the **Select a Page** pane.
+
+#. Select **Full** in the **Recovery Model** drop-down list, and click **OK**.
+
+#. Close **SQL Server Management Studio**, and logout of server.
