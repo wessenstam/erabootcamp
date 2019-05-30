@@ -18,23 +18,25 @@ Using the Era REST API Explorer
 
 Era features an "API first" architecture and provides a fully documented REST API to allow for automation and orchestration of its functions through external tools. Similar to Prism, Era also provides a Rest API Explorer to easily discover and test API functions.
 
-From the menu bar, select **Admin > REST API Explorer** from the top right.
+#. From the menu bar, select **Admin > REST API Explorer** from the top right.
 
-.. figure:: images/29.png
+   .. figure:: images/29.png
 
-Expand the different categories to view the available operations, including registering Nutanix clusters, registering and provisioning databases, cloning and refreshing databases, updating profiles and SLAs, and getting operation and alert information.
+#. Expand the different categories to view the available operations, including registering Nutanix clusters, registering and provisioning databases, cloning and refreshing databases, updating profiles and SLAs, and getting operation and alert information.
 
-As a simple test, expand **Databases > GET /databases**. This function returns JSON containing details regarding all registered and provisioned databases and requires no additional parameters.
+#. As a simple test, expand **Databases > GET /databases**.
 
-Click **Try it out > Execute**.
+   This function returns JSON containing details regarding all registered and provisioned databases and requires no additional parameters.
 
-.. figure:: images/30.png
+#. Click **Try it out > Execute**.
 
-You should receive a JSON response body similar to the image below.
+   .. figure:: images/30.png
 
-.. figure:: images/32.png
+   You should receive a JSON response body similar to the image below.
 
-This API can be used to create powerful workflows using tools like Nutanix Calm, ServiceNow, Ansible, or others. As an example you could provision a Calm blueprint containing the web tier of an application and use a Calm eScript to invoke Era to clone an existing database and return the IP of the newly provisioned database to Calm.
+   .. figure:: images/32.png
+
+   This API can be used to create powerful workflows using tools like Nutanix Calm, ServiceNow, Ansible, or others. As an example you could provision a Calm blueprint containing the web tier of an application and use a Calm eScript to invoke Era to clone an existing database and return the IP of the newly provisioned database to Calm.
 
 Takeaways
 +++++++++

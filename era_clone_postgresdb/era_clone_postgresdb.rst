@@ -18,140 +18,134 @@ Cloning Your PostgreSQL Source
 
 Now that you have created a source database, you can easily clone it using Era Time Machine. Database clones are helpful for development and testing purposes, allowing non-production environments to utilize product data without impacting production operations. Era clones utilize Nutanix-native copy-on-write cloning technology, allowing for zero-byte database clones. This space efficiency can significantly lower storage costs for environments supporting large numbers of database clones.
 
-In **Era > Time Machines**, select the Time Machine instance for your source database.
+#. In **Era > Time Machines**, select the Time Machine instance for your source database.
 
-.. figure:: images/16a.png
+   .. figure:: images/16a2.png
 
-Click **Snapshot** and enter **First** as the **Snapshot Name**.
+#. Click **Snapshot** and enter **First** as the **Snapshot Name**.
 
-.. figure:: images/17a.png
+   .. figure:: images/17a.png
 
-Click **Create**.
+#. Click **Create**.
 
-You can monitor the **Create Snapshot** job in **Era > Operations**.
+   You can monitor the **Create Snapshot** job in **Era > Operations**.
 
-.. figure:: images/18a.png
+   .. figure:: images/18a2.png
 
-After the snapshot job completes, select the Time Machine instance for your source database in **Era > Time Machines** and click **Clone Database**.
+#. After the snapshot job completes, select the Time Machine instance for your source database in **Era > Time Machines** and click **Clone Database**.
 
-.. figure:: images/18b.png
+#. On the **Time** tab, select **Snapshot > First**.
 
-On the **Time** tab, select **Snapshot > First**.
+   .. note::
 
-.. note::
+     Without creating manual snapshots, Era also offers the ability to clone a database based on **Point in Time** increments including Continuous (Every Second), Daily, Weekly, Monthly, or Quarterly. Availability is controlled by the SLA of the source.
 
-  Without creating manual snapshots, Era also offers the ability to clone a database based on **Point in Time** increments including Continuous (Every Second), Daily, Weekly, Monthly, or Quarterly. Availability is controlled by the SLA of the source.
+   .. figure:: images/19a2.png
 
-.. figure:: images/19a.png
+#. Click **Next**.
 
-Click **Next**.
+#. On the **Database Server** tab, fill out the following fields:
 
-On the **Database Server** tab, fill out the following fields:
+   - **Database Server** - Create New Server
+   - **VM Name** - *Initials*-DBServer-Clone
+   - **Compute Profile** - Lab
+   - **Network Profile** - DEFAULT_OOB_NETWORK
+   - **SSH Public Key** -
 
-- **Database Server** - Create New Server
-- **VM Name** - DBServer-*Initials*-Clone
-- **Compute Profile** - Lab
-- **Network Profile** - DEFAULT_OOB_NETWORK
-- **SSH Public Key** -
+   .. code-block:: text
 
-.. code-block:: text
+     ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoQRdEfm8ZJNGlYLQ2iw08eVk/Wyj0zl3M5KyqKmBTpUaS1uxj0K05HMHaUNP+AeJ63Qa2hI1RJHBJOnV7Dx28/yN7ymQpvO1jWejv/AT/yasC9ayiIT1rCrpHvEDXH9ee0NZ3Dtv91R+8kDEQaUfJLYa5X97+jPMVFC7fWK5PqZRzx+N0bh1izSf8PW0snk3t13DYovHFtlTpzVaYRec/XfgHF9j0032vQDK3svfQqCVzT02NXeEyksLbRfGJwl3UsA1ujQdPgalil0RyyWzCMIabVofz+Czq4zFDFjX+ZPQKZr94/h/6RMBRyWFY5CsUVvw8f+Rq6kW+VTYMvvkv
 
-  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCoQRdEfm8ZJNGlYLQ2iw08eVk/Wyj0zl3M5KyqKmBTpUaS1uxj0K05HMHaUNP+AeJ63Qa2hI1RJHBJOnV7Dx28/yN7ymQpvO1jWejv/AT/yasC9ayiIT1rCrpHvEDXH9ee0NZ3Dtv91R+8kDEQaUfJLYa5X97+jPMVFC7fWK5PqZRzx+N0bh1izSf8PW0snk3t13DYovHFtlTpzVaYRec/XfgHF9j0032vQDK3svfQqCVzT02NXeEyksLbRfGJwl3UsA1ujQdPgalil0RyyWzCMIabVofz+Czq4zFDFjX+ZPQKZr94/h/6RMBRyWFY5CsUVvw8f+Rq6kW+VTYMvvkv
+   .. figure:: images/20a2.png
 
-.. figure:: images/20a.png
+#. Click **Next**.
 
-Click **Next**.
+#. On the **Database Server** tab, fill out the following fields:
 
-On the **Database Server** tab, fill out the following fields:
+   - **Name** - *Initials*\_LabDB_Clone
+   - **Description** - (Optional) Description
+   - **Password** - techX2019!
+   - **Database Parameter Profile** - DEFAULT_POSTGRES_PARAMS
 
-- **Name** - LabDB_\ *Initials*\ _Clone
-- **Description** - (Optional) Description
-- **Password** - techX2019!
-- **Database Parameter Profile** - DEFAULT_POSTGRES_PARAMS
+   .. figure:: images/21a2.png
 
-.. figure:: images/21a.png
+#. Click **Clone**.
 
-Click **Clone**.
+   The cloning process will take approximately the same amount of time as provisioning the original database and can be monitored in **Era > Operations**.
 
-The cloning process will take approximately the same amount of time as provisioning the original database and can be monitored in **Era > Operations**.
+   While waiting for the clone to complete, explore **Era > SLAs** to understand the differences between standard SLAs offered by Era, or create your own custom SLA.
 
-While waiting for the clone to complete, explore **Era > SLAs** to understand the differences between standard SLAs offered by Era, or create your own custom SLA.
+   .. figure:: images/21b.png
 
-.. figure:: images/21b.png
+#. Following the completion of the clone operation, you can connect to the clone instance as described in the previous section, `Connecting to the Database`_.
 
-Following the completion of the clone operation, you can connect to the clone instance as described in the previous section.
+   .. figure:: images/23a2.png
 
-.. figure:: images/23a.png
-
-The newly provisioned clone is now ready to be used.
+   The newly provisioned clone is now ready to be used.
 
 Refreshing A Cloned Database
 ++++++++++++++++++++++++++++
 
 The ability to easily refresh a cloned database using new data from the source database improves development, test, and other use cases by ensuring they have access to new and relevant data. In this section you will add a new table for storing data to your source database, and refresh the existing clone.
 
-Using your **Tools VM**, open **pgAdmin**.
+#. In **pgAdmin**, select your source database (**NOT** the cloned database), and from the menu bar click **Tools > Query Tool**.
 
-Select your source database (**NOT** the cloned database), and from the menu bar click **Tools > Query Tool**.
+   .. figure:: images/25a2.png
 
-Start pgAdmin, select your source database instance, go to the Tools menu and select Query Tool
+#. From the **Query Tool**, type the following SQL command into the editor:
 
-.. figure:: images/25a.png
+   .. code-block:: postgresql
+     :name: products-table-sql
 
-From the **Query Tool**, type the following SQL command into the editor:
+     CREATE TABLE products (
+     product_no integer,
+     name text,
+     price numeric
+     );
 
-.. code-block:: postgresql
-  :name: products-table-sql
+#. Click :fa:`bolt` **Execute/Refresh**.
 
-  CREATE TABLE products (
-  product_no integer,
-  name text,
-  price numeric
-  );
+   .. figure:: images/26a.png
 
-Click :fa:`bolt` **Execute/Refresh**.
+#. Verify the creation of the table under **Schemas > Public > Tables > products**.
 
-.. figure:: images/26a.png
+   .. note::
 
-Verify the creation of the table under **Schemas > Public > Tables > products**.
+     You may need to refresh **Tables** for the newly created table to appear.
 
-.. note::
+   .. figure:: images/27a2.png
 
-  You may need to refresh **Tables** for the newly created table to appear.
+   Previously you created a manual snapshot on which to base your cloned database, for the refresh you will leverage the **Point in Time** capability of Era.
 
-.. figure:: images/27a.png
+   The default schedule for **Log Catch Up**, configured when provisioning the source database, is every 30 minutes. Based on this schedule, you should expect to be able to refresh the database based on updates older than 30 minutes with no further action required.
 
-Previously you created a manual snapshot on which to base your cloned database, for the refresh you will leverage the **Point in Time** capability of Era.
+   In this case, you just created the **products** table in your source database, so a manual execution of **Log Catch Up** would be required to copy transactional logs to Era from your source database.
 
-The default schedule for **Log Catch Up**, configured when provisioning the source database, is every 30 minutes. Based on this schedule, you should expect to be able to refresh the database based on updates older than 30 minutes with no further action required.
+#. In **Era > Time Machines**, select the Time Machine instance for your source database and click **Log Catch Up > Yes**.
 
-In this case, you just created the **products** table in your source database, so a manual execution of **Log Catch Up** would be required to copy transactional logs to Era from your source database.
+   .. figure:: images/27c.png
 
-In **Era > Time Machines**, select the Time Machine instance for your source database and click **Log Catch Up > Yes**.
+#. Once the **Log Catchup** job completes, in **Era > Databases > Clones**, select the clone of your source database and click **Refresh**.
 
-.. figure:: images/27c.png
+   .. figure:: images/27b2.png
 
-Once the **Log Catchup** job completes, in **Era > Databases > Clones**, select the clone of your source database and click **Refresh**.
+#. Refreshing to the latest available **Point in Time** is selected by default. Click **Refresh**.
 
-.. figure:: images/27b.png
+   .. figure:: images/27d.png
 
-Refreshing to the latest available **Point in Time** is selected by default. Click **Refresh**.
+#. Observe the steps taken by Era to refresh the cloned database in **Operations**.
 
-.. figure:: images/27d.png
+   .. figure:: images/27e.png
 
-Observe the steps taken by Era to refresh the cloned database in **Operations**.
+#. Once the **Refresh Clone** job is complete, refresh the **Tables** view of your clone database in **pgAdmin** and confirm the **products** table is now present.
 
-.. figure:: images/27e.png
+   .. figure:: images/28a2.png
 
-Once the **Refresh Clone** job is complete, refresh the **Tables** view of your clone database in **pgAdmin** and confirm the **products** table is now present.
+   In just a couple of clicks and minutes you were able to update your cloned database using the latest available production data. This same approach could be leveraged to recover absent data from a database by provisioning a clone based on a previous snapshot or point in time.
 
-.. figure:: images/28a.png
+#. Return to the **Dashboard** and review the critical information Era provides to administrators, including storage savings, clone aging, tasks, and alerts.
 
-In just a couple of clicks and minutes you were able to update your cloned database using the latest available production data. This same approach could be leveraged to recover absent data from a database by provisioning a clone based on a previous snapshot or point in time.
-
-Return to the **Dashboard** and review the critical information Era provides to administrators, including storage savings, clone aging, tasks, and alerts.
-
-.. figure:: images/28b.png
+   .. figure:: images/28b2.png
 
 Takeaways
 +++++++++
