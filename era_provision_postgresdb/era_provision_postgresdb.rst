@@ -24,7 +24,7 @@ The initial release of Era supports the following Operating Systems and Database
 - Windows Server 2012, Windows Server 2012 R2, and Windows Server 2016
 - Oracle 11.2.0.4.x, 12.1.0.2.x, and 12.2.0.1.x
 - PostgreSQL 9.x and 10.x
-- SQL Server 2008 R2, SQL Server 2012, SQL Server 2014, and SQL Server 2016
+- SQL Server 2008 R2, SQL Server 2012, SQL Server 2014, SQL Server 2016, and SQL Server 2017
 
 Era can be used to provision database servers and databases on the registered Nutanix cluster, or you can register an existing source database running on the cluster. In this lab, you will provision a new PostgreSQL database server and database.
 
