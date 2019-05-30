@@ -139,7 +139,7 @@ To refresh the clone WideWorldImporters_Clone, do the following:
 
 #. Open \https://*ERA-VM-IP:8443*/ in a new browser tab.
 
-#. Select **Sources** in the **Databases** pane on the left-hand side of the screen.
+#. Select **Clones** in the **Databases** pane on the left-hand side of the screen.
 
 #. Select the **WideWorldImporters_Clone** database.
 
