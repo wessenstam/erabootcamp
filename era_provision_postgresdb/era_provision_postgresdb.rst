@@ -92,7 +92,7 @@ Era makes it even simpler to provision a simple PostgreSQL database by providing
 
    - **Database Name** - *Initials*\_LabDB
    - **Description** - (Optional) Description
-   - **POSTGRES Password** - techX2019!
+   - **POSTGRES Password** - nutanix/4u
    - **Database Parameter Profile** - DEFAULT_POSTGRES_PARAMS
    - **Listener Port** - 5432
    - **Size (GiB)** - 200
@@ -163,7 +163,7 @@ Now that Era has successfully provisioned a database instance, you will connect 
    - **Port** - 5432
    - **Maintenance Database** - postgres
    - **Username** - postgres
-   - **Password** - techX2019!
+   - **Password** - nutanix/4u
 
    .. figure:: images/5d2.png
 

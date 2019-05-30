@@ -11,7 +11,7 @@ Overview
 
   Estimated time to complete: **30 MINUTES**
 
-This lab will show you how to provision, connect, and view a Postgres Database.
+This lab will deploy and configure a MSSQL Server to be managed by Era.
 
 
 Create The Database Storage Container
@@ -35,7 +35,7 @@ Let's use Prism Element to perform the container setup.
    - **Delay (In Minutes)** - 0
    - Select **Erasure Coding**
 
-   #. Click **Save**.
+#. Click **Save**.
 
    .. figure:: images/storage_01.png
 

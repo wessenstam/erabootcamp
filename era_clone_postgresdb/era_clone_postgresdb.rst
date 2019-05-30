@@ -64,7 +64,7 @@ Now that you have created a source database, you can easily clone it using Era T
 
    - **Name** - *Initials*\_LabDB_Clone
    - **Description** - (Optional) Description
-   - **Password** - techX2019!
+   - **Password** - nutanix/4u
    - **Database Parameter Profile** - DEFAULT_POSTGRES_PARAMS
 
    .. figure:: images/21a2.png

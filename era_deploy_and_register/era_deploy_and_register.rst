@@ -79,7 +79,7 @@ Registering a Cluster
    - **Description** - (Optional) Description
    - **Address** - *Your Prism Element Cluster IP*
    - **Prism Element Administrator** - admin
-   - **Password** - techX2019!
+   - **Password** - nutanix/4u
 
    .. figure:: images/3b2.png
 
