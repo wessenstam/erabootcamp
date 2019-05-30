@@ -66,12 +66,12 @@ Registering a Cluster
 
 #. Select **I have read and agree to terms and conditions** and click **Continue**.
 
-#. Enter **techX2019!** as the **admin** password and click **Set Password**.
+#. Enter *Cluster Password* as the **admin** password and click **Set Password**.
 
 #. Login using the following credentials:
 
    - **Username** - admin
-   - **Password** - techX2019!
+   - **Password** - *Cluster Password*
 
 #. On the **Welcome to Era** page, fill in the following information:
 
@@ -79,7 +79,7 @@ Registering a Cluster
    - **Description** - (Optional) Description
    - **Address** - *Your Prism Element Cluster IP*
    - **Prism Element Administrator** - admin
-   - **Password** - nutanix/4u
+   - **Password** - *Cluster Password*
 
    .. figure:: images/3b2.png
 
