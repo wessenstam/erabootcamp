@@ -24,7 +24,6 @@
 
   era_provision_postgresdb/era_provision_postgresdb
   era_clone_postgresdb/era_clone_postgresdb
-  era_rest_api/era_rest_api
 
 .. toctree::
   :maxdepth: 2
@@ -33,6 +32,16 @@
   :hidden:
 
   era_create_mssql_server/era_create_mssql_server
+  era_register_mssql_dbs/era_register_mssql_dbs
+  era_clone_mssqldb/era_clone_mssqldb
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Era Rest APIs
+  :name: _era_rest_apis
+  :hidden:
+
+  era_rest_api/era_rest_api
 
 .. toctree::
   :maxdepth: 2
