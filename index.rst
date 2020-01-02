@@ -1,9 +1,9 @@
-.. title:: Nutanix Era Bootcamp
+.. title:: Era METI Come Together 2020 Lab
 
 .. toctree::
   :maxdepth: 2
-  :caption: Era Tech Summit 2019 Lab
-  :name: _era_tech_summit_2019_lab
+  :caption: Era METI Come Together 2020 Lab
+  :name: _era_meti_come_together_lab
   :hidden:
 
   era/era
@@ -35,21 +35,20 @@
   era_register_mssql_dbs/era_register_mssql_dbs
   era_clone_mssqldb/era_clone_mssqldb
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Era Rest APIs
-  :name: _era_rest_apis
-  :hidden:
+..
+  .. toctree::
+    :maxdepth: 2
+    :caption: Era Rest APIs
+    :name: _era_rest_apis
+    :hidden:
 
-  era_rest_api/era_rest_api
+    era_rest_api/era_rest_api
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Optional Labs
-  :name: _optional_labs
-  :hidden:
-
-
+  .. toctree::
+    :maxdepth: 2
+    :caption: Optional Labs
+    :name: _optional_labs
+    :hidden:
 
 .. toctree::
   :maxdepth: 2
@@ -67,27 +66,20 @@
 Getting Started
 ---------------
 
-Welcome to the Nutanix Era Bootcamp!
+Welcome to the Nutanix Era Labs! This workbook accompanies an instructor-led session that introduces Nutanix Era and many common management tasks. Each section has a lesson and an exercise to give you hands-on practice. The instructor explains the exercises and answers any additional questions that you may have.
 
-Nutanix Era is a software suite that automates and simplifies database administration – bringing One Click simplicity and invisible operations to database provisioning and lifecycle management (LCM).
+.. note::
 
-With One Click database provisioning and Copy Data Management (CDM) as its first services, Nutanix Era enables DBAs to provision, clone, refresh, and backup their databases to any point in time. Line of business applications in every vertical depend on databases, providing use cases in both production and non-production environments.
-
-This workbook accompanies an instructor-led session that introduces Nutanix Era and many common management tasks. Each section has a lesson and an exercise to give you hands-on practice. The instructor explains the exercises and answers any additional questions that you may have.
+	If this is your first encounter with ERA, or you want to update your knowledge on ERA from the beginning, run all the labs. Otherwise run the added MSSQL server labs. All labs will take approx 3 hours. The MSSQL labs approx 1.5 hours.
 
 What's New
 ++++++++++
 
 - Workshop updated for the following software versions:
-    - AOS & PC 5.10.x
+    - AOS & PC 5.11.x
 
 - Optional Lab Updates:
-
-Resources
-+++++++++
-
-- `Era Software Download <https://portal.nutanix.com/#/page/releases/eraDetails>`_
-- `Era User Guide <https://portal.nutanix.com/#/page/docs/details?targetId=Nutanix-Era-User-Guide-v10:Nutanix-Era-User- Guide-v10>`_
+    - MS SQL Server part
 
 Agenda
 ++++++
@@ -96,51 +88,33 @@ Agenda
     - Era: Deploy and Register
     - Era: Provision Postgres DB
     - Era: Clone Postgres DB
-    - Era: Create MSSQL Server
-    - Era: Register MSSQL Databases
-    - Era: Clone MSSQL DB
-    - Era: REST API Explorer
+    - Era: Install and configure a MSSQL Server
+    - Era: Register a MSSQL Server in Era
+    - Era: Clone a MSSQL Server
 
 - Optional Labs
     - SSHKey Creation
 
-Introductions
-+++++++++++++
-
-- Name
-- Familiarity with Nutanix
-
-Initial Setup
-+++++++++++++
-
-- Take note of the *Passwords* being used.
-- Log into your virtual desktops (connection info below)
 
 Environment Details
 +++++++++++++++++++
 
-Nutanix Workshops are intended to be run in the Nutanix Hosted POC environment. Your cluster will be provisioned with all necessary images, networks, and VMs required to complete the exercises.
+The Nutanix Hosted POC environment has been setup for you. To follow the setup process so you can re-run this workshop, please follow the instructions `here <http://ntnx.tips/HOWTO>`_.
 
 Networking
 ..........
 
 Hosted POC clusters follow a standard naming convention:
 
-- **Cluster Name** - POC\ *XYZ*
-- **Subnet** - 10.**21**.\ *XYZ*\ .0
-- **Cluster IP** - 10.**21**.\ *XYZ*\ .37
-
-If provisioned from the marketing pool:
-
-- **Cluster Name** - MKT\ *XYZ*
-- **Subnet** - 10.**20**.\ *XYZ*\ .0
-- **Cluster IP** - 10.**20**.\ *XYZ*\ .37
+- **Cluster Name** - PHX-POC\ *XYZ*
+- **Subnet** - 10.42.\ *XYZ*\ .0
+- **Cluster IP** - 10.42.\ *XYZ*\ .37
 
 For example:
 
 - **Cluster Name** - POC055
-- **Subnet** - 10.21.55.0
-- **Cluster IP** - 10.21.55.37
+- **Subnet** - 10.42.55.0
+- **Cluster IP** - 10.42.55.37
 
 Throughout the Workshop there are multiple instances where you will need to substitute *XYZ* with the correct octet for your subnet, for example:
 
@@ -150,11 +124,11 @@ Throughout the Workshop there are multiple instances where you will need to subs
 
   * - IP Address
     - Description
-  * - 10.21.\ *XYZ*\ .37
+  * - 10.42.\ *XYZ*\ .37
     - Nutanix Cluster Virtual IP
-  * - 10.21.\ *XYZ*\ .39
+  * - 10.42.\ *XYZ*\ .39
     - **PC** VM IP, Prism Central
-  * - 10.21.\ *XYZ*\ .40
+  * - 10.42.\ *XYZ*\ .41
     - **DC** VM IP, NTNXLAB.local Domain Controller
 
 Each cluster is configured with 2 VLANs which can be used for VMs:
@@ -168,20 +142,20 @@ Each cluster is configured with 2 VLANs which can be used for VMs:
     - VLAN
     - DHCP Scope
   * - Primary
-    - 10.21.\ *XYZ*\ .1/25
-    - 0
-    - 10.21.\ *XYZ*\ .50-10.21.\ *XYZ*\ .124
+    - 10.42.\ *XYZ*\ .1/25
+    - *XYZ*
+    - 10.42.\ *XYZ*\ .50-10.21.\ *XYZ*\ .124
   * - Secondary
-    - 10.21.\ *XYZ*\ .129/25
+    - 10.42.\ *XYZ*\ .129/25
     - *XYZ1*
-    - 10.21.\ *XYZ*\ .132-10.21.\ *XYZ*\ .253
+    - 10.42.\ *XYZ*\ .132-10.21.\ *XYZ*\ .253
 
 Credentials
 ...........
 
 .. note::
 
-  The *<Cluster Password>* is unique to each cluster and will be provided by the leader of the Workshop.
+  The *<Cluster Password>*, in the below table, is unique to each cluster and will be provided.
 
 .. list-table::
   :widths: 25 35 40
@@ -203,7 +177,7 @@ Credentials
     - nutanix
     - *<Cluster Password>*
 
-Each cluster has a dedicated domain controller VM, **DC**, responsible for providing AD services for the **NTNXLAB.local** domain. The domain is populated with the following Users and Groups:
+Each cluster has a dedicated domain controller VM, **AutoDC2**, responsible for providing AD services for the **NTNXLAB.local** domain. The domain is populated with the following Users and Groups:
 
 .. list-table::
   :widths: 25 35 40
@@ -228,44 +202,26 @@ Each cluster has a dedicated domain controller VM, **DC**, responsible for provi
     - basicuser01-basicuser25
     - nutanix/4u
 
+.. _assign-cluster:
+
 Access Instructions
 +++++++++++++++++++
 
-The Nutanix Hosted POC environment can be accessed a number of different ways:
+To see which cluster has been assigned to you, please use the below table:
 
-Parallels VDI
-.................
 
-Login to: https://xld-uswest1.nutanix.com (for PHX) or https://xld-useast1.nutanix.com (for RTP)
 
-**Nutanix Employees** - Use your NUTANIXDC credentials
-**Non-Employees** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
+.. raw:: html
 
-Pulse Secure VPN
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRbGExQjI8Xxdndg5OF7WElTDB3YUbeoWf8QfAdhM2Sy8bdW9rzzQO9489rF1RXNv_4jyIryd6wNBgW/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
+
+.. note::
+    Write down your IP addresses on a piece of paper to make it a bit easier for yourself...
+
+
+
+
+Employee Pulse Secure VPN
 ..........................
 
-To download the client: login to https://xlv-uswest1.nutanix.com or https://xlv-useast1.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** *<Provided by Instructor>*
-
-Download and install the client.
-
-In Pulse Secure Client, **Add** a connection:
-
-For PHX:
-
-- **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - X-Labs - PHX
-- **Server URL** - xlv-uswest1.nutanix.com
-
-For RTP:
-
-- **Type** - Policy Secure (UAC) or Connection Server
-- **Name** - X-Labs - RTP
-- **Server URL** - xlv-useast1.nutanix.com
-
-
-Nutanix Version Info
-++++++++++++++++++++
-
-- **AHV Version** - AHV 20170830.185 (5.9+/5.10+)
-- **AOS Version** - 5.10.2
-- **PC Version** - 5.10.2
+https://sslvpn.nutanix.com - Use your CORP credentials
