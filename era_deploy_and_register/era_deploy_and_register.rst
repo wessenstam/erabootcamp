@@ -7,6 +7,10 @@ Era: Deploy and Register
 Overview
 ++++++++
 
+.. note::
+
+  Estimated time to complete: **15 MINUTES**
+
 Nutanix Era is a software suite that automates and simplifies database administration – bringing One Click simplicity and invisible operations to database provisioning and lifecycle management (LCM).
 
 With One Click database provisioning and Copy Data Management (CDM) as its first services, Nutanix Era enables DBAs to provision, clone, refresh, and backup their databases to any point in time. Line of business applications in every vertical depend on databases, providing use cases in both production and non-production environments.
